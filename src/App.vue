@@ -9,6 +9,7 @@
           <img v-bind:src=" tweet.img" />
           <p>Tweet:{{tweet.tweet}}</p>
           <p>Likes:{{tweet.likes}}</p>
+          <p>Total Tweets Today:{{totalTweets}}</p>
         </div>
       </section>
   </div>
@@ -47,11 +48,11 @@ export default {
     ]
   };
 },
-// computed:{
-//   totalTweets: function(){
-//     return this.tweets.map((tweet) =>{return tweet.likes});
-//    }
-// }
+computed:{
+  totalTweets: function(){
+    return this.tweets.reduce((total, tweet) => total + tweet.likes, 0);
+   }
+}
 }
 </script>
 
